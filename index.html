@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CÓDIGO ROJO: RESCATE, TRAUMA &amp; FUEGO — Pulso &amp; Combate (Edición Campo)</title>
+  <style>
+    :root {
+      --bg-base: #090d14;
+      --bg-surface: #111824;
+      --bg-card: #162030;
+      --bg-card-alt: #1b273a;
+      --border-subtle: rgba(148, 163, 184, 0.18);
+      --border-strong: rgba(248, 113, 113, 0.45);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --crimson: #ef4444;
+      --crimson-dark: #991b1b;
+      --crimson-soft: rgba(239, 68, 68, 0.14);
+      --amber: #f59e0b;
+      --amber-soft: rgba(245, 158, 11, 0.14);
+      --cyan: #22d3ee;
+      --cyan-soft: rgba(34, 211, 238, 0.12);
+      --emerald: #10b981;
+      --emerald-soft: rgba(16, 185, 129, 0.14);
+      --violet: #a78bfa;
+      --violet-soft: rgba(167, 139, 250, 0.14);
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-sm: 7px;
+      --shadow-tactical: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(239, 68, 68, 0.11), transparent 36%),
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.08), transparent 34%),
+        var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* Top Tactical Header */
+    .tactical-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(9, 13, 20, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--crimson-soft);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--crimson);
+      box-shadow: 0 0 8px var(--crimson);
+    }
+
+    .unit-tag {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--cyan);
+      background: var(--cyan-soft);
+      border: 1px solid rgba(34, 211, 238, 0.28);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    h1.app-title {
+      margin: 2px 0 0;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+
+    .app-subtitle {
+      margin: 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-dispatch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 13px;
+      border-radius: var(--radius-sm);
+      background: var(--crimson);
+      color: #ffffff;
+      border: 1px solid #f87171;
+      transition: transform 0.14s ease, background 0.14s ease;
+    }
+
+    .btn-dispatch:hover {
+      background: #dc2626;
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 13px;
+      border-radius: var(--radius-sm);
+      background: var(--emerald-soft);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      transition: transform 0.14s ease, background 0.14s ease;
+    }
+
+    .btn-whatsapp-top:hover {
+      background: rgba(16, 185, 129, 0.24);
+      transform: translateY(-1px);
+    }
+
+    /* Navigation Tabs */
+    .nav-strip {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 16px 10px;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .nav-tab {
+      flex: 0 0 auto;
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .nav-tab:hover {
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .nav-tab.active {
+      background: var(--crimson);
+      color: #ffffff;
+      border-color: #fca5a5;
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
+    }
+
+    /* Main Layout */
+    main.container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+    }
+
+    .panel {
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-banner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--crimson);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-banner h2 {
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .section-banner p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-tactical);
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #ffffff;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .badge-crimson { background: var(--crimson-soft); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
+    .badge-amber { background: var(--amber-soft); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.35); }
+    .badge-cyan { background: var(--cyan-soft); color: #67e8f9; border: 1px solid rgba(34, 211, 238, 0.35); }
+    .badge-emerald { background: var(--emerald-soft); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .badge-violet { background: var(--violet-soft); color: #ddd6fe; border: 1px solid rgba(167, 139, 250, 0.35); }
+
+    /* XABCDE Interactive Steps */
+    .xabcde-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .x-btn {
+      background: var(--bg-card-alt);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 7px 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .x-btn.active {
+      background: var(--crimson);
+      border-color: #fca5a5;
+      color: #ffffff;
+    }
+
+    .x-detail-box {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    /* Protocol & Glossary Cards */
+    .controls-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 18px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: var(--bg-base);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+    }
+
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .chip-btn {
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .chip-btn:hover {
+      color: var(--text-main);
+    }
+
+    .chip-btn.active {
+      background: var(--cyan);
+      color: #061018;
+      border-color: #a5f3fc;
+    }
+
+    .protocol-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .protocol-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-tactical);
+    }
+
+    .protocol-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .protocol-title {
+      margin: 0;
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .sub-box {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px;
+    }
+
+    .sub-box h4 {
+      margin: 0 0 6px;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .box-def h4 { color: var(--cyan); }
+    .box-need h4 { color: var(--violet); }
+    .box-do h4 { color: var(--emerald); }
+    .box-dont h4 { color: #f87171; }
+    .box-ped h4 { color: var(--amber); }
+    .box-risk h4 { color: #fbbf24; }
+
+    .sub-box p, .sub-box ul {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .sub-box ul {
+      padding-left: 18px;
+    }
+
+    .sub-box li {
+      margin-bottom: 4px;
+    }
+
+    /* Tools */
+    .tool-readout {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin: 8px 0;
+    }
+
+    .btn-primary {
+      background: var(--crimson);
+      color: #ffffff;
+      border: 1px solid #fca5a5;
+      border-radius: var(--radius-sm);
+      padding: 9px 14px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: var(--bg-card-alt);
+      color: var(--text-main);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 9px 14px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .burn-regions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+
+    .burn-check {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      font-size: 0.84rem;
+      cursor: pointer;
+    }
+
+    .triage-option {
+      width: 100%;
+      text-align: left;
+      background: var(--bg-card-alt);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .triage-option:hover {
+      border-color: var(--cyan);
+    }
+
+    /* Trivia */
+    .quiz-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: var(--bg-card-alt);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .quiz-option.correct {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: var(--emerald);
+      color: #a7f3d0;
+    }
+
+    .quiz-option.wrong {
+      background: rgba(239, 68, 68, 0.22);
+      border-color: var(--crimson);
+      color: #fecaca;
+    }
+
+    /* Botiquin Checklist */
+    .kit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 10px;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+    }
+
+    .kit-item input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--emerald);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .kit-item.checked span {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    /* Footer & Disclaimer */
+    footer.tactical-footer {
+      max-width: 1180px;
+      margin: 24px auto 0;
+      padding: 18px 16px 36px;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .disclaimer-box {
+      background: rgba(245, 158, 11, 0.09);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      color: #fde68a;
+      margin-bottom: 12px;
+    }
+
+    .credits-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        padding: 10px 12px;
+      }
+      main.container {
+        padding: 14px 12px 36px;
+      }
+      .protocol-card {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="tactical-header">
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="brand-badge-row">
+          <span class="status-pill"><span class="status-dot"></span> CÓDIGO ROJO: RESCATE, TRAUMA &amp; FUEGO</span>
+          <span class="unit-tag">Cumaná · GRUMAE / Respuesta en Campo</span>
+        </div>
+        <h1 class="app-title">CÓDIGO ROJO: RESCATE, TRAUMA &amp; FUEGO</h1>
+        <p class="app-subtitle">Pulso &amp; Combate — Edición Campo · Referencia operativa de atención prehospitalaria, trauma e incendios</p>
+      </div>
+      <div class="header-actions">
+        <a id="btn-call-fire" class="btn-dispatch" href="tel:02934312102">Llamar Bomberos Cumaná (0293-4312102)</a>
+        <a id="btn-wa-top" class="btn-whatsapp-top" href="#botiquin" onclick="openTab('botiquin'); return true;">Apoyo WhatsApp (0416-9897927)</a>
+      </div>
+    </div>
+
+    <nav class="nav-strip" aria-label="Secciones principales">
+      <button class="nav-tab active" data-tab="mando" onclick="openTab('mando')">Centro de Mando</button>
+      <button class="nav-tab" data-tab="glosario" onclick="openTab('glosario')">Glosario Técnico &amp; 16 Protocolos</button>
+      <button class="nav-tab" data-tab="herramientas" onclick="openTab('herramientas')">Herramientas en Vivo</button>
+      <button class="nav-tab" data-tab="trivia" onclick="openTab('trivia')">Trivia (15 Escenarios)</button>
+      <button class="nav-tab" data-tab="botiquin" onclick="openTab('botiquin')">Botiquín Dual &amp; Apoyo</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- PANEL 1: CENTRO DE MANDO -->
+    <section id="panel-mando" class="panel active">
+      <div class="section-banner">
+        <h2>Centro de Mando Táctico — Evaluación Inicial y Orden de Prioridad</h2>
+        <p>En escena, la seguridad del rescatista y el control de amenazas mortales mandan primero. Cada módulo está separado con claridad para evitar mezclas operativas entre bioseguridad, mirones, multitudes, trauma, clínica, accidentes e incendios.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Secuencia XABCDE en Escena</h3>
+            <span class="badge badge-crimson">Prioridad Vital</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0;">Selecciona cada letra para revisar el enfoque operativo inmediato:</p>
+          <div class="xabcde-tabs" id="xabcde-tabs">
+            <button class="x-btn active" data-x="X" onclick="selectXABCDE('X')">X · Exanguinación</button>
+            <button class="x-btn" data-x="A" onclick="selectXABCDE('A')">A · Vía Aérea &amp; Cervical</button>
+            <button class="x-btn" data-x="B" onclick="selectXABCDE('B')">B · Ventilación</button>
+            <button class="x-btn" data-x="C" onclick="selectXABCDE('C')">C · Circulación &amp; Shock</button>
+            <button class="x-btn" data-x="D" onclick="selectXABCDE('D')">D · Déficit Neurológico</button>
+            <button class="x-btn" data-x="E" onclick="selectXABCDE('E')">E · Exposición &amp; Entorno</button>
+          </div>
+          <div class="x-detail-box" id="xabcde-detail"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Alarma Pediátrica / Adulto &amp; Seguridad en Escena</h3>
+            <span class="badge badge-amber">Escena &amp; Edad</span>
+          </div>
+          <ul style="padding-left: 18px; margin: 0; font-size: 0.89rem;">
+            <li style="margin-bottom: 8px;"><strong>Seguridad en Escena y Evacuación:</strong> no entres a zonas con fuego activo sin EPP, humos tóxicos, cables caídos, tránsito sin controlar o derrumbes inestables. Despacha a <strong>Bomberos Cumaná (0293-4312102)</strong> temprano.</li>
+            <li style="margin-bottom: 8px;"><strong>Adulto vs. Pediátrico (lactantes, niños y adolescentes):</strong> en lactantes y niños pequeños, la hipoxia, la fatiga respiratoria, la deshidratación y la hipotermia descompensan más rápido que en el adulto; en lactantes el pulso braquial es clave y en niños/lactantes las compresiones y ventilaciones exigen dosificación proporcional.</li>
+            <li><strong>Alerta vs. Calma:</strong> mantén voz firme y calma para ordenar la escena; activa alarma máxima ante sangrado exanguinante, apnea/paro, cianosis, quemadura de vía aérea, caída neurológica brusca o propagación de fuego.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Bioseguridad (Módulo Independiente)</h3>
+            <span class="badge badge-cyan">Aislamiento &amp; EPP</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Protección estricta frente a sangre, fluidos corporales, secreciones, aerosoles y cortopunzantes. Separada de accidentes viales, mirones y multitudes.</p>
+          <button class="btn-secondary" onclick="openTabAndFilter('glosario', 'Bioseguridad', '')">Abrir Bioseguridad</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Mirones y Curiosos</h3>
+            <span class="badge badge-amber">Control de Perímetro</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Evita aglomeraciones encima del paciente, escándalos, grabaciones que invadan privacidad o bloqueen el acceso de ambulancias y unidades motorizadas.</p>
+          <button class="btn-secondary" onclick="openTabAndFilter('glosario', 'Mirones', '')">Abrir Mirones</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Calma en Shows y Multitudes</h3>
+            <span class="badge badge-violet">Eventos &amp; Aforos</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Prevención de pánico colectivo, aplastamientos y estampidas en conciertos, fiestas o recintos cerrados; apertura de pasillos y resguardo infantil.</p>
+          <button class="btn-secondary" onclick="openTabAndFilter('glosario', 'Shows y Multitudes', '')">Abrir Shows y Multitudes</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Trauma, Fracturas, Quemaduras y Heridas</h3>
+            <span class="badge badge-crimson">Trauma &amp; Tejidos</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Trauma cerrado, penetrante, contuso, TCE, raquimedular, torácico, abdominal y extremidades; fracturas infantiles y adultas, quemaduras (1.º–4.º) y tipos de heridas.</p>
+          <button class="btn-secondary" onclick="openTabAndFilter('glosario', 'Trauma', '')">Abrir Trauma</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Emergencias Clínicas</h3>
+            <span class="badge badge-emerald">Clínico &amp; Rescate</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Infarto agudo de miocardio, arritmias/taquicardia/bradicardia, ECV/ACV, ataque respiratorio/OVACE, paro cardiorrespiratorio y crisis convulsivas.</p>
+          <button class="btn-secondary" onclick="openTabAndFilter('glosario', 'Clínico', '')">Abrir Clínico</button>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Accidentes e Incendios (NFPA)</h3>
+            <span class="badge badge-amber">Calle · Trabajo · Fuego</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Accidentes en calle, laborales y domésticos; ciencias del fuego, fases, clases A–K, extinción, NFPA 10 y NFPA 704.</p>
+          <button class="btn-secondary" onclick="openTabAndFilter('glosario', 'Incendios', '')">Abrir Incendios &amp; NFPA</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 2: GLOSARIO TÉCNICO EXTENSO & 16 PROTOCOLOS -->
+    <section id="panel-glosario" class="panel">
+      <div class="section-banner">
+        <h2>Glosario Técnico Extenso &amp; 16 Protocolos Operativos</h2>
+        <p>Cada concepto y protocolo tiene su ficha propia, sin mezclar módulos. Incluye definición amplia, qué se necesita, qué hacer, qué no hacer, diferencias entre adultos y pacientes pediátricos, y criterios de riesgo / alerta vs. calma.</p>
+      </div>
+
+      <div class="controls-bar">
+        <input id="glossary-search" class="search-input" type="search" placeholder="Buscar por término o protocolo (ej. fractura tallo verde, bioseguridad, mirones, infarto, ECV, NFPA 704, quemadura, herida punzante)..." oninput="renderGlossary()" />
+        <div class="filter-chips" id="filter-chips">
+          <button class="chip-btn active" data-cat="Todos" onclick="setCategory('Todos')">Todos</button>
+          <button class="chip-btn" data-cat="Bioseguridad" onclick="setCategory('Bioseguridad')">Bioseguridad</button>
+          <button class="chip-btn" data-cat="Mirones" onclick="setCategory('Mirones')">Mirones</button>
+          <button class="chip-btn" data-cat="Shows y Multitudes" onclick="setCategory('Shows y Multitudes')">Shows y Multitudes</button>
+          <button class="chip-btn" data-cat="Trauma" onclick="setCategory('Trauma')">Trauma</button>
+          <button class="chip-btn" data-cat="Heridas" onclick="setCategory('Heridas')">Heridas</button>
+          <button class="chip-btn" data-cat="Clínico" onclick="setCategory('Clínico')">Clínico</button>
+          <button class="chip-btn" data-cat="Accidentes" onclick="setCategory('Accidentes')">Accidentes</button>
+          <button class="chip-btn" data-cat="Incendios" onclick="setCategory('Incendios')">Incendios</button>
+        </div>
+      </div>
+
+      <div id="protocol-count" style="margin-bottom: 12px; font-size: 0.85rem; color: var(--text-muted);"></div>
+      <div id="protocol-list" class="protocol-list"></div>
+    </section>
+
+    <!-- PANEL 3: HERRAMIENTAS EN VIVO -->
+    <section id="panel-herramientas" class="panel">
+      <div class="section-banner">
+        <h2>Herramientas de Campo en Vivo</h2>
+        <p>Apoyo rápido para compresiones torácicas (110 LPM en ciclo 30:2), estimación orientativa de superficie corporal quemada y clasificación inicial START.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Metronomo RCP -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Metrónomo RCP 30:2 (110 LPM)</h3>
+            <span class="badge badge-crimson">Reanimación</span>
+          </div>
+          <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0;">Pulso constante a 110 latidos/minuto para mantener ritmo de compresiones; cada 30 compresiones haz pausa breve para 2 ventilaciones si cuentas con barrera.</p>
+          <div class="tool-readout" id="cpr-display">110 LPM · Ciclo 30:2</div>
+          <div id="cpr-beat-status" style="font-size: 0.88rem; color: var(--amber); font-weight: 700; margin-bottom: 10px;">Compresión: 0 / 30</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-primary" id="btn-cpr-toggle" onclick="toggleCPR()">Iniciar Metrónomo</button>
+            <button class="btn-secondary" onclick="resetCPR()">Reiniciar Conteo</button>
+          </div>
+        </div>
+
+        <!-- Calculadora de Quemaduras -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Superficie Quemada (SCQ)</h3>
+            <span class="badge badge-amber">Estimación</span>
+          </div>
+          <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0;">Selecciona el grupo etario y marca las zonas afectadas (estimación orientativa de campo; la palma de la mano del paciente equivale aprox. a 1%):</p>
+          <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+            <button class="chip-btn active" id="burn-mode-adult" onclick="setBurnMode('adult')">Adulto</button>
+            <button class="chip-btn" id="burn-mode-ped" onclick="setBurnMode('ped')">Pediátrico</button>
+          </div>
+          <div class="burn-regions" id="burn-regions"></div>
+          <div class="tool-readout" id="burn-total">0% SCQ</div>
+          <div id="burn-severity" style="font-size: 0.86rem; color: var(--text-muted);">Selecciona regiones para estimar extensión.</div>
+        </div>
+
+        <!-- Triaje START -->
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Clasificador Triaje START</h3>
+            <span class="badge badge-cyan">Multivíctimas</span>
+          </div>
+          <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0;">Responde el criterio observable para asignar prioridad inicial (Rojo / Amarillo / Verde / Negro):</p>
+          <div id="start-step-box" class="x-detail-box" style="margin-bottom: 10px;"></div>
+          <button class="btn-secondary" onclick="resetSTART()">Reiniciar Triaje START</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 4: TRIVIA 15 ESCENARIOS -->
+    <section id="panel-trivia" class="panel">
+      <div class="section-banner">
+        <h2>Trivia Operativa — 15 Escenarios de Campo</h2>
+        <p>Pon a prueba criterio de escena, bioseguridad, control de mirones y multitudes, trauma, emergencias clínicas, diferencias adulto/pediátrico e incendios/NFPA.</p>
+      </div>
+      <div class="card">
+        <div class="card-header-row">
+          <h3 id="trivia-progress">Escenario 1 de 15</h3>
+          <span class="badge badge-emerald" id="trivia-score">Puntaje: 0 / 15</span>
+        </div>
+        <p id="trivia-question" style="font-size: 1rem; font-weight: 700; color: #ffffff;"></p>
+        <div id="trivia-options"></div>
+        <div id="trivia-feedback" class="x-detail-box" style="display: none; margin-top: 10px;"></div>
+        <div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn-primary" id="btn-next-trivia" onclick="nextTrivia()" style="display: none;">Siguiente Escenario</button>
+          <button class="btn-secondary" onclick="restartTrivia()">Reiniciar Trivia</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 5: BOTIQUÍN DUAL & APOYO -->
+    <section id="panel-botiquin" class="panel">
+      <div class="section-banner">
+        <h2>Botiquín Dual Persistente, Despacho y Apoyo Voluntario</h2>
+        <p>Marca tus insumos en Hogar/Familia y Campo/Motorizada/Fuego (se guardan automáticamente en este dispositivo). Aquí también tienes línea directa a Bomberos Cumaná y canal de apoyo voluntario por WhatsApp.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Botiquín Dual — Hogar / Familia</h3>
+            <span class="badge badge-emerald">Guardado Local</span>
+          </div>
+          <div id="kit-home"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Botiquín Dual — Campo / Motorizada / Fuego</h3>
+            <span class="badge badge-crimson">Guardado Local</span>
+          </div>
+          <div id="kit-field"></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Despacho Directo — Bomberos Cumaná</h3>
+            <span class="badge badge-crimson">Emergencia</span>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">En caso de incendio, rescate, accidente grave o emergencia médica, contacta de inmediato a los servicios de emergencia correspondientes.</p>
+          <a class="btn-dispatch" href="tel:02934312102">Llamar a Bomberos Cumaná: 0293-4312102</a>
+        </div>
+
+        <div class="card">
+          <div class="card-header-row">
+            <h3>Apoyo Voluntario por WhatsApp</h3>
+            <span class="badge badge-cyan">Colaboración</span>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Si deseas apoyar de forma voluntaria el mantenimiento y actualización de <strong>CÓDIGO ROJO: RESCATE, TRAUMA &amp; FUEGO</strong>, escríbenos directamente por WhatsApp al <strong>0416-9897927</strong> (<strong>+58 416-9897927</strong>). No se publican datos bancarios en esta aplicación.</p>
+          <a id="btn-wa-support" class="btn-whatsapp-top" href="https://wa.me/584169897927?text=Hola%20Jes%C3%BAs%2C%20quiero%20brindar%20apoyo%20voluntario%20para%20la%20app%20C%C3%93DIGO%20ROJO%3A%20RESCATE%2C%20TRAUMA%20%26%20FUEGO." target="_blank" rel="noopener noreferrer">Apoyar por WhatsApp (0416-9897927)</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="tactical-footer">
+    <div class="disclaimer-box">
+      <strong>Aviso de referencia y preparación:</strong> Esta aplicación es una herramienta educativa de referencia y preparación de campo. No sustituye la evaluación médica profesional, la atención prehospitalaria certificada ni el despacho oficial de emergencias.
+    </div>
+    <div class="credits-row">
+      <span><strong>Impulsado por Jesús Bermúdez con asistencia de IA</strong></span>
+      <span>CÓDIGO ROJO: RESCATE, TRAUMA &amp; FUEGO · Bomberos Cumaná: 0293-4312102 · WhatsApp: 0416-9897927</span>
+    </div>
+  </footer>
+
+  <script>
+    const CUMANA_FIRE_PHONE = "02934312102";
+    const WHATSAPP_NUMBER = "584169897927";
+
+    const XABCDE_DATA = {
+      X: {
+        title: "X — Exanguinación Crítica (Sangrado que amenaza la vida)",
+        text: "Controla de inmediato sangrados externos masivos o a chorro antes de pasar a otros pasos. Aplica presión directa firme, empaquetamiento en heridas profundas o torniquete comercial/adecuado bien ajustado proximal a la herida (evitando articulaciones)."
+      },
+      A: {
+        title: "A — Vía Aérea Permeable y Control Cervical",
+        text: "Verifica si la vía aérea está libre de secreciones, vómito, sangre o cuerpos extraños visibles. Si hay sospecha de trauma cervical o caída de altura, protege la alineación neutra de cabeza y cuello sin hiperextender bruscamente."
+      },
+      B: {
+        title: "B — Ventilación y Respiración",
+        text: "Observa expansión torácica, frecuencia y esfuerzo respiratorio, ruidos anormales o signos de insuficiencia respiratoria (aleteo nasal, tirajes, cianosis). Evalúa sospecha de neumotórax o lesión por inhalación de humo/gases."
+      },
+      C: {
+        title: "C — Circulación, Perfusión y Control de Shock",
+        text: "Revisa pulso, llenado capilar, coloración y temperatura de la piel, y sangrados ocultos. Coloca al paciente en posición adecuada según su condición (nunca en decúbito supino si hay dificultad respiratoria severa o vómito activo) y previene hipotermia."
+      },
+      D: {
+        title: "D — Déficit Neurológico",
+        text: "Valora estado de conciencia (alerta, responde a voz, responde a dolor, no responde), pupilas, habla, fuerza y simetría facial o de extremidades. Vigila cambios bruscos por TCE, hipoxia, hipoglucemia, convulsión o ECV/ACV."
+      },
+      E: {
+        title: "E — Exposición y Protección del Entorno",
+        text: "Explica y descubre únicamente la zona necesaria para examinar lesiones o quemaduras, cuidando el pudor y evitando enfriamiento. Protege al paciente del clima, humo, tránsito o público aglomerado."
+      }
+    };
+
+    const PROTOCOLS = [
+      {
+        id: "bioseguridad",
+        category: "Bioseguridad",
+        tag: "Módulo Independiente",
+        badgeClass: "badge-cyan",
+        title: "Bioseguridad en Escena y Atención Prehospitalaria",
+        def: "Conjunto de barreras físicas, prácticas de higiene y procedimientos de control de infecciones para evitar que el rescatista o terceros entren en contacto con sangre, fluidos corporales, secreciones, aerosoles o materiales cortopunzantes contaminados.",
+        need: "Guantes de examen/nitrilo, mascarilla quirúrgica o respirador según riesgo, protección ocular/facial, bata o delantal impermeable, solución hidroalcohólica/agua y jabón, recipiente rígido para cortopunzantes y bolsa para residuos biológicos.",
+        dos: [
+          "Usa guantes antes de tocar sangre, mucosas, heridas o superficies manchadas con fluidos.",
+          "Lávate las manos o higienízalas antes y después del contacto, y al retirar el EPP.",
+          "Desecha agujas, hojas o vidrios rotos directo en envase rígido resistente a punción sin reencapuchar a ciegas."
+        ],
+        donts: [
+          "No reutilices guantes descartables ni te toques ojos, nariz, boca o teléfono con guantes contaminados.",
+          "No arrojes gasas empapadas con sangre o cortopunzantes a la basura común ni dejes material abandonado en la vía.",
+          "No mezcles bioseguridad con el control de mirones o el tránsito: cada tarea tiene su protocolo."
+        ],
+        ped: "En lactantes y niños hay mayor exposición a secreciones nasales, saliva, vómito, orina y pañales; usa EPP adecuado, evita frotar su rostro con manos contaminadas y mantén superficies limpias sin enfriar al menor.",
+        risks: "Exposición a patógenos transmitidos por sangre o fluidos e infecciones cruzadas. Alerta máxima ante salpicaduras en mucosas, pinchazos o aerosoles en vía aérea; mantén calma y ejecuta descontaminación ordenada."
+      },
+      {
+        id: "mirones",
+        category: "Mirones",
+        tag: "Protocolo Independiente",
+        badgeClass: "badge-amber",
+        title: "Mirones y Curiosos en Escenas de Emergencia",
+        def: "Personas que se concentran alrededor de un accidente, incidente médico o rescate sin rol operativo, generando ruido, estorbo físico, presión emocional sobre la víctima o grabación de imágenes.",
+        need: "Voz clara y firme, postura serena pero decidida, apoyo de testigos colaboradores o autoridades, y delimitación visual de un perímetro de trabajo.",
+        dos: [
+          "Asigna tareas concretas a personas útiles (por ejemplo, llamar a emergencias o apartar un vehículo) para despejar el área.",
+          "Pide con autoridad y cortesía abrir espacio para ventilación de la víctima, privacidad y paso de unidades de rescate.",
+          "Evita discusiones o gritos innecesarios que escalen el conflicto y distraigan del paciente."
+        ],
+        donts: [
+          "No permitas que rodeen al paciente ni que tapen el aire o la visibilidad del equipo.",
+          "No toleres que graben o fotografíen a personas heridas o vulnerables ni que toquen o muevan pertenencias o evidencias.",
+          "No entres en peleas verbales ni físicas con curiosos; apóyate en seguridad o autoridades."
+        ],
+        ped: "Si hay un niño o adolescente herido o asustado, los curiosos y las cámaras aumentan su terror y desorientación; crea un cerco visual y sonoro para proteger su integridad física y emocional.",
+        risks: "Obstrucción del acceso de ambulancias/bomberos, interferencia en la atención, agravamiento del estrés agudo y nuevos accidentes por distracción. Alerta si hay agresividad; mantén calma firme."
+      },
+      {
+        id: "shows-multitudes",
+        category: "Shows y Multitudes",
+        tag: "Protocolo Independiente",
+        badgeClass: "badge-violet",
+        title: "Calma, Control y Seguridad en Shows, Conciertos y Multitudes",
+        def: "Manejo del comportamiento colectivo en eventos masivos, recintos cerrados, espectáculos o concentraciones donde el ruido, el calor, el alcohol o una alarma súbita pueden provocar pánico, caídas o aplastamiento.",
+        need: "Rutas de evacuación identificadas, linterna/señalización visible, coordinación con seguridad del evento y comunicación directa y pausada.",
+        dos: [
+          "Habla con tono grave, calmado y directo para contrarrestar el pánico y guiar el flujo hacia salidas amplias y despejadas.",
+          "Abre pasillos de evacuación y atención médica, ayudando a levantarse a quien caiga antes de que se forme acumulación.",
+          "Ubica y resguarda de inmediato a niños, personas mayores o con movilidad reducida lejos de empujones y barandas."
+        ],
+        donts: [
+          "No grites 'fuego' o 'corran' sin verificar ni generes corridas hacia puertas bloqueadas o estrechas.",
+          "No empujes contra la corriente de la multitud ni permitas que se cierren salidas de emergencia durante el evento.",
+          "No dejes niños sueltos entre las piernas de la multitud."
+        ],
+        ped: "Los niños y jóvenes en shows o multitudes tienen menor estatura (riesgo de asfixia compresiva o pérdida de contacto visual con adultos) y mayor sensibilidad al ruido y calor; llévalos a zonas seguras ventiladas y de baja densidad.",
+        risks: "Asfixia por compresión torácica, caídas en cadena, golpes de calor y deshidratación. Alerta alta ante empujones sostenidos, humo o bloqueos de salida; mantén calma y dirige con claridad."
+      },
+      {
+        id: "trauma-general",
+        category: "Trauma",
+        tag: "Trauma & Tipos",
+        badgeClass: "badge-crimson",
+        title: "Trauma y Tipos de Trauma (Cerrado, Penetrante, Contuso y Regional)",
+        def: "Daño físico producido por transferencia brusca de energía mecánica, térmica, eléctrica o química al organismo. Se clasifica por mecanismo (cerrado/contuso vs. abierto/penetrante), región anatómica (TCE, raquimedular, torácico, abdominal, extremidades) o afectación multisistémica (politrauma).",
+        need: "EPP, control de hemorragias graves, inmovilización/alineación según el caso, valoración XABCDE y aviso oportuno a emergencias.",
+        dos: [
+          "Evalúa el mecanismo de lesión y busca sangrados ocultos o signos de shock (palidez, sudoración fría, taquicardia, alteración mental).",
+          "Inmoviliza o estabiliza según la región afectada: en trauma craneoencefálico (TCE) o raquimedular, evita movimientos innecesarios de cuello y columna.",
+          "En trauma torácico o abdominal, vigila dificultad respiratoria, dolor intenso o distensión/rigidez y mantén traslado rápido."
+        ],
+        donts: [
+          "No muevas bruscamente a un paciente con sospecha de lesión de columna o TCE salvo peligro inminente en el lugar.",
+          "No retires objetos empalados (fíjalos con cuidado si es necesario) ni des líquidos o alimentos por boca ante trauma moderado/severo.",
+          "No subestimes un trauma cerrado o contuso solo porque no hay sangrado externo visible."
+        ],
+        ped: "En niños, el esqueleto es más flexible y los órganos internos están más próximos entre sí: puede haber hemorragia interna grave o lesión pulmonar/hepática/esplénica sin fracturas externas evidentes.",
+        risks: "Hemorragia interna, shock hipovolémico, hipoxia, hipertensión intracraneal o lesión medular. Alerta inmediata ante alteración de conciencia, disnea, dolor abdominal agudo o caída de presión/perfusión."
+      },
+      {
+        id: "fracturas",
+        category: "Trauma",
+        tag: "Osteoarticular",
+        badgeClass: "badge-crimson",
+        title: "Fracturas: Clasificación y Subtipos en Adultos y Niños",
+        def: "Pérdida de continuidad de un hueso. Incluye fractura cerrada (piel intacta), abierta/expuesta (hueso o foco comunicado con el exterior), transversa, oblicua, espiroidea, conminuta (múltiples fragmentos), por impactación, avulsión, patológica (hueso debilitado) y por estrés (microfisuras repetitivas).",
+        need: "Férulas rígidas o moldeables, vendajes, almohadillado, cabestrillo si aplica, valoración de pulso/sensibilidad/movilidad distal y control de sangrado si es abierta.",
+        dos: [
+          "Inmoviliza incluyendo la articulación por encima y por debajo de la fractura sospechada.",
+          "En fractura abierta, cubre la herida con apósito estéril o limpio sin empujar el hueso hacia adentro y controla sangrado.",
+          "Revisa pulso, color, temperatura y sensibilidad distal antes y después de inmovilizar."
+        ],
+        donts: [
+          "No intentes enderezar a la fuerza deformidades anguladas ni pruebes movilidad dolorosa en el hueso lesionado.",
+          "No aprietes vendajes al punto de cortar la circulación distal ni ignores entumecimiento o frialdad en los dedos.",
+          "No des analgésicos no indicados si el paciente va a evaluación médica urgente o presenta alteración del estado mental."
+        ],
+        ped: "En niños son frecuentes las fracturas en tallo verde, deformación plástica, en rodete (torus) y las fracturas que comprometen la fisis (cartílago de crecimiento): toda lesión cerca de una articulación infantil requiere valoración médica para proteger el crecimiento óseo.",
+        risks: "Daño vascular o nervioso, síndrome compartimental, infección ósea en fracturas abiertas y alteración del crecimiento en niños. Alerta ante extremidad pálida/fría/sin pulso o exposición ósea."
+      },
+      {
+        id: "quemaduras",
+        category: "Trauma",
+        tag: "Térmicas · Eléctricas · Químicas",
+        badgeClass: "badge-amber",
+        title: "Quemaduras: Grados (1.º a 4.º), Mecanismos e Inhalación",
+        def: "Lesiones tisulares por calor, electricidad, sustancias químicas o inhalación de gases/humos calientes. Por profundidad: 1.er grado (epidermis, eritema y dolor), 2.º grado (dermis superficial con flictenas/ampollas o profunda), 3.er grado (espesor total, zonas blanquecinas/acartonadas) y 4.º grado (compromiso profundo hasta músculo, tendón o hueso).",
+        need: "Agua limpia a temperatura ambiente (para térmicas/químicas), gasas estériles no adherentes, cobertura seca/limpia, protección térmica general y evaluación de vía aérea.",
+        dos: [
+          "En quemaduras térmicas leves/moderadas, enfría con agua corriente limpia (no helada) durante varios minutos y retira anillos o prendas holgadas antes de que haya edema.",
+          "Cubre con apósitos estériles o limpios sin comprimir y protege al paciente del enfriamiento corporal general.",
+          "En quemaduras químicas, cepilla primero el polvo seco si aplica y lava con abundante agua cuidando de no salpicar a otros."
+        ],
+        donts: [
+          "No apliques hielo directo, mantequilla, aceites, pasta dental ni remedios caseros sobre quemaduras.",
+          "No revientes ampollas ni despegues a la fuerza ropa adherida a la piel quemada.",
+          "No te acerques a víctimas de descarga eléctrica hasta cortar y verificar que la fuente de energía esté segura."
+        ],
+        ped: "En lactantes y niños, el porcentaje de superficie corporal es distinto y el riesgo de hipotermia y deshidratación es mayor; sospecha lesión de vía aérea ante quemaduras faciales, hollín nasal, disfonía o exposición a humo en recinto cerrado.",
+        risks: "Obstrucción de vía aérea por edema/inhalación, shock por pérdida de líquidos, arritmias/lesión profunda en eléctricas e infección. Alerta máxima ante estridor, ronquera, quemaduras en cara/manos/genitales o extensión amplia."
+      },
+      {
+        id: "heridas",
+        category: "Heridas",
+        tag: "Piel y Hemorragias",
+        badgeClass: "badge-crimson",
+        title: "Heridas y Tipos de Heridas / Sangrados",
+        def: "Soluciones de continuidad en piel o tejidos. Tipos de herida: abrasiva/raspado, laceración (bordes irregulares por desgarro), incisa/cortante (bordes netos por filo), punzante (estrecha y profunda, alto riesgo de infección o daño interno), avulsiva (colgajo o arrancamiento) y amputación. Sangrados: capilar (rezume), venoso (flujo continuo oscuro) y arterial (pulsátil/a chorro, rojo brillante).",
+        need: "Guantes, gasas estériles, vendajes, apósitos hemostáticos o torniquete si hay sangrado severo en extremidad, agua/solución limpia para heridas superficiales y envase limpio/seco en bolsa dentro de hielo indirecto si hay parte amputada.",
+        dos: [
+          "Aplica presión directa firme con gasa sobre el punto de sangrado; si empapa, añade más capas sin retirar el coágulo inicial.",
+          "Usa torniquete en hemorragia exanguinante de extremidad cuando la presión directa no controla el sangrado o en entorno táctico/peligro, anotando la hora.",
+          "En amputaciones, controla el sangrado del muñón y preserva la parte amputada envuelta en gasa limpia/húmeda dentro de bolsa sellada colocada sobre hielo (sin congelar directo)."
+        ],
+        donts: [
+          "No retires objetos grandes incrustados o empalados; estabilízalos para evitar mayor sangrado o daño.",
+          "No apliques torniquete sobre articulaciones ni lo aflojes por tu cuenta una vez colocado salvo indicación médica.",
+          "No cierres heridas punzantes sucias o mordeduras de forma hermética en campo."
+        ],
+        ped: "En niños, un volumen de sangre relativamente menor hace que el sangrado continuo o las laceraciones profundas lleven más rápido al shock; mantén calma y explica paso a paso para reducir el llanto y el movimiento.",
+        risks: "Shock hipovolémico por sangrado arterial/venoso abundante, infección, tétanos y lesión tendinosa o nerviosa. Alerta máxima ante sangrado a chorro o que no cede a presión directa."
+      },
+      {
+        id: "lesiones-osteoarticulares",
+        category: "Trauma",
+        tag: "Golpes · Esguinces · Luxaciones",
+        badgeClass: "badge-amber",
+        title: "Golpes, Contusiones, Hematomas, Esguinces y Luxaciones",
+        def: "Contusión y hematoma: impacto cerrado con rotura de vasos pequeños y acumulación de sangre/edema (equimosis si es superficial). Esguince (grados I–III): estiramiento o desgarro de ligamentos articulares. Luxación: pérdida completa de contacto articular; subluxación: desplazamiento parcial (como el 'codo de niñera' o pronación dolorosa en niños).",
+        need: "Reposo, compresa fría envuelta (nunca hielo directo), soporte o inmovilización de la articulación y evaluación de pulso/sensibilidad distal.",
+        dos: [
+          "Inmoviliza la articulación en la posición en que se encuentre si hay deformidad o dolor intenso, y revisa pulso y sensibilidad distal.",
+          "Aplica frío local envuelto en tela durante periodos breves para limitar edema y dolor.",
+          "Busca atención médica para confirmar reducción segura y descartar fractura asociada."
+        ],
+        donts: [
+          "No intentes 'acomodar' o reducir a la fuerza una luxación o subluxación en campo.",
+          "No apliques calor intenso ni masajes profundos en las primeras horas tras el golpe o esguince.",
+          "No hagas cargar peso ni forzar movimiento en una articulación inestable o deformada."
+        ],
+        ped: "En niños pequeños es frecuente la subluxación de la cabeza del radio ('codo de niñera') tras un tirón brusco del brazo; el niño suele mantener el brazo pegado y en pronación sin querer moverlo. Requiere maniobra segura por profesional entrenado y vigilancia.",
+        risks: "Lesión neurovascular, fractura oculta, inestabilidad articular crónica y dolor intenso. Alerta ante pérdida de pulso, palidez/frialdad, hormigueo intenso o deformidad marcada."
+      },
+      {
+        id: "infarto-arritmias",
+        category: "Clínico",
+        tag: "Cardiovascular",
+        badgeClass: "badge-crimson",
+        title: "Infarto Agudo de Miocardio, Arritmias, Taquicardia y Bradicardia",
+        def: "Infarto agudo de miocardio: isquemia/necrosis del músculo cardíaco (incluyendo cuadros con elevación del ST como IAMCEST, sin elevación como IAMSEST o angina inestable). Arritmias: alteraciones del ritmo cardíaco, como taquicardia (frecuencia rápida) o bradicardia (frecuencia lenta), que pueden comprometer el gasto cardíaco.",
+        need: "Entorno calmado, reposo inmediato del paciente, activación urgente de emergencias y DEA/RCP listos si evoluciona a paro.",
+        dos: [
+          "Coloca al paciente en reposo en posición cómoda (a menudo semisentado si hay molestia torácica o falta de aire) y afloja ropa ajustada.",
+          "Activa el sistema de emergencias de inmediato ante dolor/presión en pecho que irradia a brazo, mandíbula, cuello o espalda, con sudoración o disnea.",
+          "Vigila conciencia y respiración minuto a minuto; prepárate para iniciar RCP si pierde respuesta y deja de respirar normalmente."
+        ],
+        donts: [
+          "No hagas caminar ni esforzarse a alguien con dolor torácico sospechoso de infarto o mareo/síncope por arritmia.",
+          "No administres fármacos por tu cuenta ni minimices síntomas atípicos en mujeres, adultos mayores o diabéticos.",
+          "No dejes solo a un paciente con dolor opresivo, palpitaciones intensas o presíncope."
+        ],
+        ped: "En pacientes pediátricos el infarto aterosclerótico es raro, pero existen arritmias congénitas, miocarditis, alteraciones electrolíticas o bradicardia secundaria a hipoxia; ante bradicardia con mala perfusión en niños, la oxigenación/ventilación y el soporte son críticos.",
+        risks: "Paro cardiorrespiratorio, shock cardiogénico, edema pulmonar o síncope traumático. Alerta máxima ante dolor torácico opresivo, síncope, disnea severa o palpitaciones con mareo/hipotensión."
+      },
+      {
+        id: "ecv-acv",
+        category: "Clínico",
+        tag: "Neurológico Vascular",
+        badgeClass: "badge-violet",
+        title: "ECV / ACV (Isquémico y Hemorrágico — Evaluación FAST / Cincinnati)",
+        def: "Evento o accidente cerebrovascular por interrupción del flujo sanguíneo (isquémico) o ruptura de un vaso cerebral (hemorrágico). FAST / Cincinnati evalúa asimetría facial (F), debilidad en brazo (A), alteración del habla (S) y urgencia del tiempo (T) para traslado rápido.",
+        need: "Registro de la hora exacta en que se notaron los primeros síntomas, vía aérea protegida si hay somnolencia o vómito, y despacho urgente.",
+        dos: [
+          "Aplica la revisión rápida facial, de brazos y de habla, y anota la hora exacta de inicio o última vez visto bien.",
+          "Mantén la cabeza ligeramente elevada si está consciente y sin signos de shock, y de costado (posición de recuperación) si vomita o tiene riesgo de aspiración.",
+          "Traslado urgente a centro con capacidad neurológica: cada minuto cuenta en el ECV isquémico y en el hemorrágico."
+        ],
+        donts: [
+          "No des líquidos, comida ni medicamentos orales si hay dificultad para tragar, habla pastosa o somnolencia.",
+          "No bajes ni subas la presión arterial con remedios caseros ni esperes a ver si 'se le pasa durmiendo'.",
+          "No muevas el cuello de forma brusca si hubo caída asociada."
+        ],
+        ped: "El ACV pediátrico es menos frecuente pero ocurre (cardiopatías, vasculopatías, trauma, anemia falciforme); puede presentarse con debilidad focal, convulsión o cefalea súbita y requiere evaluación neurológica urgente.",
+        risks: "Daño cerebral irreversible, broncoaspiración, edema cerebral o convulsiones. Alerta máxima ante asimetría facial, pérdida de fuerza unilateral, dificultad para hablar/entender o cefalea explosiva súbita."
+      },
+      {
+        id: "respiratorio-ovace",
+        category: "Clínico",
+        tag: "Vía Aérea & Ventilación",
+        badgeClass: "badge-cyan",
+        title: "Ataque Respiratorio, Dificultad Respiratoria y OVACE",
+        def: "Compromiso de la ventilación o intercambio gaseoso por crisis asmática/broncoespasmo, alergia grave, infección, humo o cuerpos extraños en la vía aérea (OVACE: obstrucción parcial con intercambio de aire vs. severa/completa con incapacidad para hablar, toser o respirar).",
+        need: "Posición cómoda que facilite respirar, inhalador prescrito si el paciente lo tiene y está indicado, maniobras de desobstrucción según edad si hay OVACE severa, y despacho urgente.",
+        dos: [
+          "Permite que el paciente adopte la posición en que respire mejor (habitualmente sentado/inclinado hacia adelante) y tranquilízalo.",
+          "En OVACE severa consciente: aplica golpes interescapulares y compresiones abdominales en adultos/niños mayores (en lactantes <1 año usa golpes en la espalda y compresiones torácicas, nunca abdominales).",
+          "Si el paciente con OVACE pierde el conocimiento, inicia RCP y revisa la vía aérea si ves objeto accesible."
+        ],
+        donts: [
+          "No acuestes a la fuerza a alguien con dificultad respiratoria severa si respira mejor sentado.",
+          "No hagas barrido a ciegas con el dedo dentro de la boca si no ves claramente el objeto, pues puedes empujarlo más adentro.",
+          "No demores el llamado de emergencia si la falta de aire empeora, hay sibilancias intensas o cianosis."
+        ],
+        ped: "Los lactantes y niños tienen vías aéreas más estrechas y se agotan rápido ante esfuerzo respiratorio; observa tirajes intercostales/supraesternales, aleteo nasal, quejido o somnolencia como signos de fatiga inminente.",
+        risks: "Hipoxia severa, paro respiratorio y paro cardíaco secundario. Alerta crítica ante imposibilidad para hablar/llorar, cianosis, estridor o agotamiento respiratorio."
+      },
+      {
+        id: "paro-rcp",
+        category: "Clínico",
+        tag: "Reanimación Cardiopulmonar",
+        badgeClass: "badge-crimson",
+        title: "Paro Cardiorrespiratorio: RCP 30:2 vs. Compresiones Continuas sin Barrera",
+        def: "Cese súbito de la actividad mecánica eficaz del corazón y de la respiración efectiva; la persona no responde y no respira normalmente (la respiración agónica o 'boqueo' no es respiración normal). Con barrera/entrenamiento se alternan 30 compresiones por 2 ventilaciones (30:2); sin dispositivo de barrera o sin ventilación segura, se realizan compresiones torácicas continuas de alta calidad.",
+        need: "Superficie firme, activación inmediata de emergencias, DEA si está disponible, barrera/bolsa-válvula-mascarilla para ventilación o manos libres para compresiones continuas a 100–120/min (referencia en app: 110 LPM).",
+        dos: [
+          "Comprueba respuesta y respiración en segundos; si no responde y no respira normalmente, activa emergencias y comienza compresiones torácicas de inmediato.",
+          "Comprime fuerte y rápido en el centro del pecho (mitad inferior del esternón), permitiendo la reexpansión completa del tórax y minimizando interrupciones.",
+          "Usa RCP 30:2 cuando tengas barrera/equipo y competencia para ventilar; si no cuentas con barrera ni ventilación segura, haz compresiones continuas sin pausa."
+        ],
+        donts: [
+          "No pierdas tiempo buscando pulso prolongadamente ni detengas las compresiones por largos periodos.",
+          "No hagas ventilaciones boca a boca sin barrera si no deseas o no puedes realizarlas con seguridad; mantén compresiones continuas.",
+          "No comprimas sobre una superficie blanda como un colchón sin base firme."
+        ],
+        ped: "En pacientes pediátricos el paro suele ser de origen respiratorio o circulatorio progresivo; las ventilaciones de rescate junto con las compresiones torácicas son clave cuando hay barrera/entrenamiento, ajustando profundidad y técnica al tamaño (lactante, niño o adolescente).",
+        risks: "Lesión cerebral hipóxica irreversible o muerte en minutos sin intervención inmediata. Alerta máxima desde el segundo en que se constata ausencia de respuesta y respiración normal."
+      },
+      {
+        id: "convulsiones",
+        category: "Clínico",
+        tag: "Neurológico Agudo",
+        badgeClass: "badge-violet",
+        title: "Crisis Convulsivas y Ataques",
+        def: "Descarga eléctrica anormal y sincronizada en el cerebro que produce movimientos tónicos/clónicos, rigidez, alteración de conciencia, mirada fija o desconexión, seguida de un periodo postictal de confusión o somnolencia.",
+        need: "Espacio despejado, almohadillado suave bajo la cabeza, registro del tiempo de duración y posición lateral segura al ceder los movimientos.",
+        dos: [
+          "Retira objetos duros o cortantes del entorno y coloca algo suave bajo la cabeza para evitar golpes.",
+          "Cronometra el inicio y la duración de la crisis; al terminar los movimientos, coloca de lado si respira y acompaña durante la recuperación.",
+          "Solicita atención urgente si la crisis dura más de 5 minutos, se repite sin recuperar conciencia, ocurre en el agua, en embarazo, tras trauma o con dificultad respiratoria."
+        ],
+        donts: [
+          "No introduzcas dedos, cucharas, paños ni ningún objeto en la boca de quien convulsiona.",
+          "No sujetes ni intentes inmovilizar a la fuerza los movimientos convulsivos.",
+          "No des agua, pastillas ni alimentos mientras esté convulsionando o somnoliento."
+        ],
+        ped: "En niños pequeños pueden presentarse convulsiones asociadas a fiebre (convulsión febril), pero siempre requieren evaluación médica para descartar infecciones del sistema nervioso, deshidratación u otras causas y vigilar la vía aérea.",
+        risks: "Traumatismos por caída, aspiración de secreciones/vómito, hipoxia o estatus convulsivo. Alerta máxima si supera los 5 minutos, hay lesiones o no recupera alerta."
+      },
+      {
+        id: "accidentes-calle-trabajo-hogar",
+        category: "Accidentes",
+        tag: "Calle · Trabajo · Hogar",
+        badgeClass: "badge-amber",
+        title: "Accidentes en la Calle, Laborales y Domésticos",
+        def: "Sucesos imprevistos con potencial de lesión: en la calle (choques, atropellos, caídas de moto, tránsito); laborales (caídas de altura, atrapamientos en maquinaria, descargas eléctricas, gases/humos/espacios confinados, cortes); y domésticos (quemaduras en cocina, caídas, intoxicaciones, ahogamiento o atragantamiento).",
+        need: "Control de riesgos del entorno (tránsito, energía, maquinaria, ventilación, agua), llamada a emergencias (Bomberos Cumaná 0293-4312102) y atención según XABCDE.",
+        dos: [
+          "En la vía pública: señaliza, evita ponerte de espaldas al tránsito y no intentes sacar a la fuerza a víctimas atrapadas si hay riesgo de incendio o colapso sin equipo.",
+          "En el trabajo: corta energía o bloquea/etiqueta maquinaria antes de acercarte; en gases o espacios confinados, no entres sin aire respirable y equipo adecuado.",
+          "En el hogar: aleja fuentes de calor o químicos, ventila si hay gases/humos y verifica el estado de la víctima."
+        ],
+        donts: [
+          "No ignores cables energizados, fugas de gas, maquinaria encendida o tránsito activo por apuro en rescatar.",
+          "No rescates a ciegas en espacios confinados o atmósferas tóxicas: las víctimas múltiples de rescatistas sin protección son frecuentes.",
+          "No traslades en vehículo particular sin criterio cuando exista riesgo de lesión cervical, medular o in
